@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Share App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #90e0ef, #48cae4, #00b4d8, #0077b6);
+      background-attachment: fixed;
+      text-align: center;
+      color: #023047;
+    }
+
+    .header {
+      background: rgba(0, 119, 182, 0.9);
+      color: white;
+      padding: 20px 0 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .header img {
+      height: 60px;
+      border-radius: 10px;
+    }
+
+    .header h1 {
+      margin: 10px 0 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .navbar {
+      background: rgba(0, 150, 199, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 35px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.3s;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .navbar ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      color: #caf0f8;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      padding: 40px 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+    }
+
+    #inputSection input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #90e0ef;
+      border-radius: 10px;
+      outline: none;
+      box-shadow: 0 0 5px #ade8f4;
+    }
+
+    #inputSection button {
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+
+    #notifications {
+      margin-top: 30px;
+    }
+
+    .note {
+      background: #caf0f8;
+      border-left: 5px solid #0077b6;
+      padding: 12px;
+      margin: 12px auto;
+      width: 80%;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .note-buttons {
+      margin-top: 10px;
+    }
+
+    .note-buttons button {
+      padding: 8px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0 5px;
+      transition: 0.3s;
+    }
+
+    .accept {
+      background-color: #2a9d8f;
+      color: white;
+    }
+
+    .reject {
+      background-color: #e63946;
+      color: white;
+    }
+
+    .accept:hover { background-color: #21867a; }
+    .reject:hover { background-color: #b91d2e; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-info {
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    .contact-info a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+     
+    <img src="C:\Users\USER\OneDrive\Desktop\water project\images\logo.jpg" alt="Water Logo">
+    <h1>💧 Water Share App</h1>
+  </div>
+
+  <div class="navbar">
+    <ul>
+      <li><a onclick="showPage('home')">Home</a></li>
+      <li><a onclick="showPage('about')">About Us</a></li>
+      <li><a onclick="showPage('how')">How to Use</a></li>
+      <li><a onclick="showPage('problem')">Any Problem</a></li>
+      <li><a onclick="showPage('input')">Input Your Thing</a></li>
+      <li><a onclick="showPage('contact')">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="content" id="content">
+    <div id="homePage">
+      <h2>Welcome to Water Share</h2>
+      <p>This app helps people share water in their community.</p>
+    </div>
+
+    <div id="aboutPage" style="display:none;">
+      <h2>About Us</h2>
+      <p>We are team helps community to share its water and make the life more big with the community.</p>
+    </div>
+
+    <div id="howPage" style="display:none;">
+      <h2>How to Use</h2>
+      <p>Go to “Input Your Thing”, write your problem, and others can Accept or Reject it.</p>
+    </div>
+
+    <div id="problemPage" style="display:none;">
+      <h2>Any Problem?</h2>
+      <p>If you face an issue, contact our support team.</p>
+    </div>
+
+    <div id="inputPage" style="display:none;">
+      <h2>Input Your Water Problem</h2>
+      <div id="inputSection">
+        <input type="text" id="userInput" placeholder="Describe your water problem...">
+        <button onclick="sendNotification()">Send</button>
+      </div>
+      <div id="notifications"></div>
+    </div>
+
+    <div id="contactPage" style="display:none;">
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <p>📞 Phone: <a href="tel:+123456789">+1 234 567 89</a></p>
+        <p>📧 Email: <a href="mailto:support@watershare.com">support@watershare.com</a></p>
+        <p>🌐 Website: <a href="https://watershare.com" target="_blank">www.watershare.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPage(page) {
+      const pages = [
+        "homePage",
+        "aboutPage",
+        "howPage",
+        "problemPage",
+        "inputPage",
+        "contactPage"
+      ];
+      pages.forEach(id => document.getElementById(id).style.display = "none");
+      document.getElementById(page + "Page").style.display = "block";
+    }
+
+    function sendNotification() {
+      const msg = document.getElementById("userInput").value.trim();
+      if (!msg) {
+        alert("Please write your water problem!");
+        return;
+      }
+
+      const note = document.createElement("div");
+      note.className = "note";
+      note.innerHTML = `
+        🚰 New Water Problem: ${msg}
+        <div class="note-buttons">
+          <button class="accept" onclick="acceptProblem(this)">Accept</button>
+          <button class="reject" onclick="rejectProblem(this)">Reject</button>
+        </div>
+      `;
+      document.getElementById("notifications").prepend(note);
+      document.getElementById("userInput").value = "";
+    }
+
+    function acceptProblem(button) {
+      alert("✅ Problem accepted! Sending signal to Arduino...");
+      sendToArduino("ACCEPT");
+      button.parentElement.parentElement.remove();
+    }
+
+    function rejectProblem(button) {
+      alert("❌ Problem rejected. Nothing changed.");
+      button.parentElement.parentElement.remove();
+    }
+
+    function sendToArduino(message) {
+      console.log("📡 Sending to Arduino:", message);
+      // Replace with your Arduino connection code
+    }
+  </script>
+
+</body>
+</html>
